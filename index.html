@@ -1,0 +1,296 @@
+<!DOCTYPE html>  
+<html lang="en" class="scroll-smooth">  
+  <head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="google-site-verification" content="hu2gXxiDGKF8uGCfcbgW7aVWJHP4_q7dKrjJmdz9W_w" />
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://randy-blaze.vercel.app/">
+<meta property="og:title" content="Randy Blaze | Portfolio">
+<meta property="og:description" content=" Rblaze-Frontend Developer,I create clean, modern, and responsive websites with smooth layouts, strong dark aesthetics, and simple user-friendly design.">
+<meta property="og:image" content="https://randy-blaze.vercel.app/blaze.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="stylesheet" href="style.css">
+<style>
+  @keyframes glow {
+    0%, 100% { text-shadow: 0 0 5px rgba(96, 165, 250, 1), 0 0 10px rgba(96, 165, 250, 0.2); }
+    50% { text-shadow: 0 0 10px rgba(96, 165, 250, 0.6), 0 0 20px rgba(96, 165, 250, 0.4), 0 0 30px rgba(96, 165, 250, 0.2); }
+  }
+  .glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+  .card-glow:hover {
+  box-shadow: 0 0 15px rgba(96, 165, 250, 1), 0 0 30px rgba(96, 165, 250, 1);
+  transform: scale(1.05);
+    }
+</style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">  
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">  
+    <title>Rblaze portfolio</title>   
+  </head>  
+  <body class="bg-black font-['JetBrains_Mono']">  
+  <nav class=" sticky top-0 z-50  gap-4 p-4 bg-blue-400 text-white whitespace-nowrap 
+    border-b">  
+    <div class="flex items-center justify-between">
+    <p class="font-bold text-xl text-black">RBlaze</p>  
+  <button id="menu-btn" class="md:hidden text-3xl">☰</button>  
+    <!--desktop menu-->  
+    <div id="menu" class="hidden md:flex gap-6 rounded-xl">  
+    <a class="hover:text-yellow-300 transition duration-300" href="#about">About</a>  
+    <a class="hover:text-yellow-300 transition duration-300" href="#tools">Tools</a>  
+    <a class="hover:text-yellow-300 transition duration-300" href="#skills">Skills</a>  
+    <a class="hover:text-yellow-300 transition duration-300" href="#projects">Projects</a>  
+    <a class="hover:text-yellow-300 transition duration-300" href="#contact">Contact</a>  
+    </div> 
+    </div>
+    <!--mobile menu-->  
+    <div id="mobile-menu" class="hidden md:hidden flex-col bg-slate-900 rounded-xl shadow-md shadow-black border border-purple-500/20">  
+    <a class="hover:text-blue-600 block p-4" href="#about">About</a>  
+    <a class="hover:text-blue-600 block p-4" href="#tools">Tools</a>  
+    <a class="hover:text-blue-600 block p-4" href="#skills">Skills</a>  
+    <a class="hover:text-blue-600 block p-4" href="#projects">Projects</a>  
+    <a class="hover:text-blue-600 block p-4" href="#contact">Contact</a>  
+    </div>  
+  </nav>  
+    <main class="max-w-7xl mx-auto p-4" data-aos="fade-up">  
+    <section id="about" class="max-w-3xl mx-auto text-center p-6">  
+      <img class="w-44 h-44 rounded-2xl mx-auto ring-2 ring-blue-400 mb-4" src="blaze.jpg" data data-aos="fade-up">
+      <h1 class="text-center text-5xl mb-2"><span id="typed-heading" class="text-blue-400 font-bold glow ">Rblaze</span></h1>  
+      <a href="#projects" class="inline-block bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition mb-2">view my work</a>
+      <p class="text-left text-white" data-aos="fade-up"> I build clean, responsive, and user-friendly websites with modern technologies.  
+      My goal is to create websites that solve real problems and help grow the tech community.</p>  
+      <p class="text-center text-white" data-aos="fade-up">This is how i came into coding you may like to read my story below.</p>
+      <button id="toggle-story" class="text-white  mt-2 cursor-pointer p-4 rounded-4xl bg-blue-400" data-aos="fade-up">Read my story</button>
+      <div id="story-content" class="hidden" data-aos="fade-up">
+      <h2 class="text-left text-blue-400  p-4 mb-4 rounded-xl text-2xl font-bold ">HOW MY CODING LIFE STARTED</h2>
+    <p class="text-left mb-2 text-white">I started coding just to know how to create bots because i really love using them.  
+  Among the way i found  something more interesting than bots <strong>The Web</strong>.  
+  so i started visiting multiple websites just to see their UI and some i saw were fantastic.  
+  I always felt amazed at their UI and that's what pulled me into coding.  
+  the thing that made me started coding was not just the bot but the owner <strong>Melvin Jones</strong> when i asked him how to create the bot he that's when he introduced me to the tech world.</p> 
+      </div>
+    </section>  
+      <!--Tool cards-->
+    <h2 id="tools" class="text-2xl font-bold  text-center m-2 p-2 text-blue-400" data-aos="fade-up">Tools</h2>  
+    <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up">  
+   <div class=" text-center rounded-4xl text-sm bg-slate-900 text-white m-2 p-2 hover:scale-105 transition shadow-md  shadow-black border border-purple-500/20 card-glow">
+     <span class="text-5xl">⚙️</span>
+     <h3 class="font-bold text-center text-white m-2">Acode</h3>  
+     <p class="text-purple-200">Mobile coding and website development</p>  
+   </div>  
+    <div class="text-center rounded-4xl bg-slate-900 text-white  p-2 m-2 hover:scale-105 transition text-sm shadow-md shadow-black border border-purple-500/20 card-glow">  
+      <i class="devicon-vercel-original text-5xl"></i>  
+     <h3 class="text-center font-bold text-white ">Vercel</h3>  
+      <p class="text-purple-200">Deploying and hosting web application</p>  
+   </div>  
+    <div class="text-center rounded-4xl hover:scale-105 transition bg-slate-900 text-white m-2 p-2 text-sm shadow-md shadow-black border border-purple-500/20 card-glow">  
+      <i class="devicon-vscode-plain colored text-5xl"></i>  
+     <h3 class="text-white font-bold text-center">VS Code</h3>  
+      <p class="text-purple-200">Code editing and development workflow</p>  
+   </div>  
+    <div class="text-center rounded-4xl  bg-slate-900 text-white m-2 p-2 hover:scale-105 transition text-sm shadow-md shadow-black border border-purple-500/20 card-glow">  
+      <i class="devicon-linux-plain  text-5xl"></i>  
+     <h3 class="text-center font-bold text-white">Termux</h3>  
+      <p class="text-purple-200">Mobile linux environment for development</p>  
+   </div>  
+  </div>  
+      <!--Skills cards-->
+    <h2 id="skills" class="text-blue-400  text-center m-2 p-2 text-2xl font-bold" data-aos="fade-up">Skills</h2>  
+    <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up">  
+   <div class="bg-slate-900 text-white rounded-2xl text-center hover:scale-105 transition text-sm p-2 m-2 shadow-md shadow-black border border-purple-500/20 card-glow">  
+     <i class="devicon-html5-plain colored text-5xl"></i>  
+     <h3 class="text-center font-bold text-white">HTML5</h3>  
+     <p class="text-purple-200">Semantic structure and accesible web pages</p>  
+   </div>  
+    <div class="text-center rounded-2xl   bg-slate-900 text-white hover:scale-105 transition p-2 m-2 text-sm shadow-md shadow-black border border-purple-500/20 card-glow">  
+      <i class="devicon-tailwindcss-original colored text-5xl"></i>  
+     <h3 class="text-center font-bold text-white">Tailwind CSS</h3>  
+      <p class="text-purple-200">Building modern UI with utility classes</p>  
+   </div>  
+    <div class=" text-center rounded-2xl  bg-slate-900 text-white  p-2 hover:scale-105 transition m-2 text-sm shadow-md shadow-black border border-purple-500/20 card-glow">  
+      <i class="devicon-javascript-plain colored text-5xl"></i>  
+     <h3 class=" text-center font-bold text-white">JavaScript</h3>  
+      <p class="text-purple-200">Creating interactive web experience</p>  
+   </div>  
+    <div class=" text-center rounded-2xl  bg-slate-900 text-white  p-2 hover:scale-105 transition m-2 text-sm shadow-black shadow-md border border-purple-500/20 card-glow">  
+      <i class="devicon-mysql-original colored text-5xl"></i>  
+     <h3 class="text-center font-bold text-white">MySQL</h3>  
+      <p class="text-purple-200">Storing and managing application data</p>  
+    </div>  
+    </div>  
+      <!--Projects-->
+    <h2 id="projects" class="text-xl font-bold text-center text-blue-400 m-2 p-2 mb-4" data-aos="fade-up">Projects</h2>  
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" data-aos="fade-up">  
+    <div class=" rounded-3xl shadow-md shadow-black max-w-md  bg-slate-900  text-white mb-4 p-4 hover:scale-105 transition duration-300 border border-purple-500/20 card-glow">  
+      <img loading="lazy" class="w-full h-48 object-cover rounded-lg" src="blazewebguide.jpg" alt="Blazewebguide logo">  
+      <h3 class="text-center p-4 text-2xl font-bold rounded-xl  text-white m-2">Blazewebguide</h3>  
+      <p class="text-purple-200 mb-2 ">An interactive learning platform that takes complete beginners from zero to building real websites with clear lessons, live examples, and hands-on projects.</p>  
+      <div class="flex flex-wrap gap-2 text-xs">  
+                            <span class="px-2 py-1 rounded bg-orange-500/20 text-orange-300">HTML</span>  
+                            <span class="px-2 py-1 rounded bg-blue-500/20 text-blue-300">CSS</span>  
+                            <span class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300">Tailwind</span>  
+                            <span class="px-2 py-1 rounded bg-green-500/20 text-green-300">JavaScript</span>
+    </div>
+        <a href="https://blazewebguide.vercel.app" target="_blank" class="inline-block mt-3  text-white px-4 py-2 hover:bg-blue-600 transition text-sm bg-blue-400 rounded-2xl">Visit my project</a>
+    </div>
+    <div class="max-w-md  rounded-3xl shadow-md shadow-black  text-white bg-slate-900 p-4 mb-4 hover:scale-105 transition duration-300 border border-purple-500/20 card-glow">  
+      <img loading="lazy" class="w-full h-48 object-cover rounded-lg" src="studio.jpg" alt="enlarge-studio logo">  
+      <h3 class="text-center p-4 text-2xl font-bold rounded-xl m-2 text-white">Enlargestudio</h3>  
+      <p class="text-purple-200  mb-2">A local studio website for professional photo and portrait enlargement services turning your memories into wall-ready prints.</p>  
+      <div class="flex flex-wrap gap-2 text-xs">  
+                            <span class="px-2 py-1 rounded bg-orange-500/20 text-orange-300">HTML</span>  
+                            <span class="px-2 py-1 rounded bg-blue-500/20 text-blue-300">CSS</span>  
+                            <span class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300">Tailwind</span>  
+                            <span class="px-2 py-1 rounded bg-green-500/20 text-green-300">JavaScript</span>  
+      </div>
+      <a href="https://enlarge-studio.vercel.app" target="_blank" class="inline-block mt-3  text-white px-4 py-2 hover:bg-blue-600 transition text-sm bg-blue-400 rounded-2xl">Visit my project</a>
+    </div>  
+    <div class="rounded-3xl shadow-md shadow-black max-w-md  bg-slate-900 p-4 mb-4 text-white hover:scale-105 transition duration-300 border border-purple-500/20 card-glow">  
+      <img loading="lazy" class="w-full h-48 object-cover rounded-lg"src="dlshub.jpg" alt="dls-hub logo">  
+      <h3 class="text-center text-white p-4 text-2xl font-bold rounded-lg m-2">Dls Hub</h3>  
+      <p class="text-purple-200 mb-2">A social hub for Dream League Soccer fans — post updates, chat with the community, climb the leaderboard, and track your DLS journey in real-time.</p>  
+      <div class="flex flex-wrap gap-2 text-xs">             
+  <span class="px-2 py-1 rounded bg-orange-500/20 text-orange-300">HTML</span>  
+   <span class="px-2 py-1 rounded bg-blue-500/20 text-blue-300">CSS</span> 
+      <span class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300">Tailwind</span>  
+  <span class="px-2 py-1 rounded bg-green-500/20 text-green-300">JavaScript</span>  
+ <span class="px-2 py-1 rounded bg-blue-500/20 text-blue-300">Community</span>  
+<span class="px-2 py-1 rounded bg-green-500/20 text-green-300">Web App</span>  
+<span class="px-2 py-1 rounded bg-purple-500/20 text-purple-300">Vercel</span>  
+      </div>
+      <a href="https://dls-hub.vercel.app" target="_blank" class="inline-block mt-3  text-white px-4 py-2 hover:bg-blue-600 transition text-sm bg-blue-400 rounded-2xl">Visit my project</a>
+    </div>
+      <div class="rounded-3xl shadow-md shadow-black max-w-md bg-slate-900 p-4 mb-4 text-white hover:scale-105 transition duration-300 border border-purple-500/20 card-glow">
+        <img loading="lazy" class="w-full h-48 rounded-lg object-cover" src="papers.jpg" alt="blaze-wallpapers">
+        <h3 class="text-center text-white p-4 text-2xl font-bold rounded-lg m-2">Blaze Wallpapers</h3>
+        <p class="text-purple-200 mb-2">A sleek wallpaper discovery platform powered by the Unsplash API — browse, search, and download unlimited HD wallpapers with a clean minimal interface.</p>
+        <div class="flex flex-wrap gap-2 text-xs">             
+  <span class="px-2 py-1 rounded bg-orange-500/20 text-orange-300">HTML</span>  
+   <span class="px-2 py-1 rounded bg-blue-500/20 text-blue-300">CSS</span> 
+      <span class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300">Tailwind</span>  
+  <span class="px-2 py-1 rounded bg-green-500/20 text-green-300">JavaScript</span>  
+        </div>
+        <a href="https://blaze-wallpapers.vercel.app" target="_blank" class="inline-block mt-3  text-white px-4 py-2 hover:bg-blue-600 transition text-sm bg-blue-400 rounded-2xl">Visit my project</a>
+      </div>
+    </div>
+      <!--Off the keyboard-->
+      <h3 class="text-blue-400 font-bold text-center mb-2 text-2xl" data-aos="fade-up">Hands off the keyboard</h3>
+      <div class="rounded-3xl shadow-md shadow-black max-w-md  bg-slate-900 p-4 mb-4 text-white hover:scale-105 transition duration-300 border border-purple-500/20 card-glow" data-aos="fade-up">
+        <img class="w-full rounded-lg" src="dls.jpg" alt="dls game logo">
+        <h3 class="text-center text-white p-4 text-2xl font-bold rounded-lg m-2">Hands off The keyboard</h3>
+        <p class="text-purple-200 mb-2">When the laptop closes, the phone opens — straight into Dream League Soccer. I run my club like I run my code: with precision, patience, and a few audacious moves. From grinding coins to building ultimate teams, DLS is my reset button. Every match is a puzzle — reading the opponent, adjusting tactics, executing under pressure. The same mindset I use to debug a broken feature is the same one I use to break down a defense. Code by day, captain by night.</p>
+      <div class="flex flex-wrap gap-2 text-xs">             
+  <span class="px-2 py-1 rounded bg-orange-500/20 text-orange-300">Gaming mode</span>  
+   <span class="px-2 py-1 rounded bg-blue-500/20 text-blue-300">off code</span> 
+      <span class="px-2 py-1 rounded bg-cyan-500/20 text-cyan-300">On pitch</span>  
+      </div>
+      </div>
+      <!--Contact form-->
+    <div class="rounded-4xl max-w-md mx-auto bg-slate-900 mt-8 shadow-md shadow-black border border-purple-500/20 card-glow" data-aos="fade-up">  
+    <section id="contact" class="max-w-2xl mx-auto p-6">  
+  <h2 class="text-2xl font-bold text-center bg-blue-400 text-white p-2 rounded-xl mb-6">  
+    Contact Me  
+  </h2>  
+  <form action="https://formsubmit.co/asonganyirandy143@mail.com" method="POST" class="space-y-4">  <div>  
+  <label for="name" class="block font-semibold mb-1 text-white">Name</label>  
+  <input  
+    type="text"  
+    id="name"  
+    name="name"  
+    placeholder="Enter your name"  
+    required  
+    class=" text-blue-400 w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"  
+  >  
+</div>  
+<div>  
+  <label for="email" class="block font-semibold mb-1 text-white">Email</label>  
+  <input  
+    type="email"  
+    id="email"  
+    name="email"  
+    placeholder="Enter your email"  
+    required  
+    class="text-blue-400 w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"  
+  >  
+</div>  
+<div>  
+  <label for="phone" class="block font-semibold mb-1 text-white">Phone Number (Optional)</label>  
+  <input  
+    type="tel"  
+    id="phone"  
+    name="phone"  
+    placeholder="Enter your phone number"  
+    class=" text-blue-400 w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"  
+  >  
+</div> 
+<div>  
+  <label for="message" class="block font-semibold mb-1 text-white">Message</label>  
+  <textarea  
+    id="message"  
+    name="message"  
+    rows="6"  
+    placeholder="Write your message..."  
+    required  
+    class="text-blue-400 w-full p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"  
+  ></textarea>  
+</div>  
+<button  
+  type="submit"  
+  class="text-white w-full bg-blue-500 py-3 rounded-lg hover:bg-blue-600 transition duration-300"  
+>  
+  Send Message  
+</button>  
+</section>  
+</div>
+  </main>  
+    <!--footer-->
+    <footer class="bg-black text-white text-center py-6 mt-10 border-t  p-4">
+<div class="flex justify-center gap-6 mt-4">
+  <a href="https://github.com/Randyblazedev" target="_blank" class="text-gray-400 hover:text-white transition text-2xl">
+    <i class="devicon-github-original"></i>
+  </a>
+  <a href="https://linkedin.com/in/Randyblazedev" target="_blank" class="text-gray-400 hover:text-white transition text-2xl">
+    <i class="devicon-linkedin-plain"></i>
+  </a>
+</div>
+      &copy; All rights reserved. Created by Randyblazedev  
+    </footer>  
+    <script>  
+const menuBtn = document.getElementById("menu-btn");  
+const mobileMenu = document.getElementById("mobile-menu");  menuBtn.addEventListener("click", () => {
+mobileMenu.classList.toggle("hidden");
+
+if (mobileMenu.classList.contains("hidden")) {
+menuBtn.textContent = "☰";
+} else {
+menuBtn.textContent = "✕";
+}
+});
+</script>
+<script>
+  new Typed("#typed-heading", {
+    strings: [
+      "Hi I am <span class='text-blue-400 font-bold'>RBlaze</span>",
+      "Hi I'm <span class='text-blue-400 font-bold'>RBlaze</span> <span class='text-blue-400 font-bold'>Frontend Developer</span>"
+    ],
+    typeSpeed: 80,
+    backSpeed: 40,
+    backDelay: 2000,
+    contentType: 'html',
+    loop: true
+  });
+</script>
+    <script>
+document.getElementById("toggle-story").addEventListener("click", function() {
+  const content = document.getElementById("story-content");
+  content.classList.toggle("hidden");
+  this.textContent = content.classList.contains("hidden") ? "Read my story →" : "Hide my story ↑";
+});
+    </script>
+    <script>AOS.init();</script>
+  </body>  
+</html>
