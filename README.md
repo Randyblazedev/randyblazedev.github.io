@@ -9,6 +9,7 @@ Personal portfolio website built from scratch on mobile — showcasing projects,
 - JavaScript (Typed.js, AOS)
 - Devicons
 - Google Fonts (JetBrains Mono)
+- CSS cli
 
 ## Features
 
