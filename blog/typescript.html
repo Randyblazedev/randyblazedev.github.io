@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Why TypeScript Is Becoming the Default — RandyBlazeDev</title>
+  <style type="text/tailwindcss">
+    @variant dark (&:where(.dark, .dark *));
+  </style>
+</head>
+<body class="bg-slate-100 dark:bg-gray-950 font-['JetBrains_Mono']">
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 w-full border-b border-black/5 dark:border-white/5 bg-white/80 dark:bg-gray-950/70 backdrop-blur-md px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <button id="theme-btn" class="px-3 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-yellow-300 text-base transition hover:scale-105">🌙</button>
+      <a href="home.html" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-500 transition font-medium">← Back to home</a>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <main class="max-w-3xl mx-auto px-6 py-12" data-aos="fade-up">
+    <!-- Meta -->
+    <div class="flex items-center flex-wrap gap-3 text-xs text-gray-500 dark:text-gray-400 mb-6">
+      <span class="px-3 py-1 rounded-full bg-blue-400/10 text-blue-500 font-semibold uppercase tracking-wide">📰 News</span>
+      <span>Aug 8, 2026</span>
+      <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+      <span>6 min read</span>
+    </div>
+
+    <!-- Title with scramble -->
+    <h1 data-scramble data-value="Why TypeScript Is Becoming the Default" class="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+      Why TypeScript Is Becoming the Default
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-lg sm:text-xl text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+      TypeScript usage is climbing fast as meta-frameworks make it the default. Here's what's driving the shift, and what it means for developers still building their fundamentals.
+    </p>
+
+    <!-- Intro -->
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      If you've been following the JavaScript ecosystem for the last couple of years, you've probably noticed the same thing I have: TypeScript isn't an optional add-on anymore. It's the default. New projects scaffolded with Next.js, Vite, and even the newest tooling ship with TypeScript configured out of the box. And that's not an accident — it's the direction the whole industry has been heading.
+    </p>
+
+    <!-- Section 1 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-blue-500 pl-4">
+      Why the Shift Happened
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      The biggest reason is scale. As web apps grew from a few files into entire codebases with dozens of contributors, the freedom of plain JavaScript became a liability. A typo in a function name, a misremembered property, a wrong argument type — these all surface at runtime, often in production. TypeScript moves those errors to your editor, where you catch them before you even save the file.
+    </p>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      The second reason is tooling. Because TypeScript knows your types, your editor can autocomplete, rename across files, and jump to definitions instantly. That's a massive productivity boost. Once you've used it, going back to untyped JavaScript feels like driving without a speedometer.
+    </p>
+
+    <!-- Code block -->
+    <pre class="bg-gray-900 dark:bg-black text-gray-100 rounded-lg p-5 font-mono text-sm leading-relaxed overflow-x-auto mb-6 shadow-lg"><code>type Developer = {
+  name: string;
+  learning: "JavaScript" | "TypeScript";
+  building: boolean;
+};
+
+const dev: Developer = {
+  name: "Randy Blaze",
+  learning: "TypeScript",
+  building: true,
+};</code></pre>
+
+    <!-- Section 2 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-blue-500 pl-4">
+      What This Means for Beginners
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      Here's the honest take: you should still learn JavaScript first. TypeScript is a superset — it builds on top of JavaScript, so it makes no sense to learn it before you understand the fundamentals. But you shouldn't wait too long either. Once you're comfortable with functions, objects, and the DOM, adding types is a small step that pays off enormously.
+    </p>
+
+    <blockquote class="border-l-4 border-blue-500 pl-4 italic text-gray-600 dark:text-gray-400 my-8">
+      "TypeScript doesn't make JavaScript harder — it makes it safer. The type system is a net you catch yourself with, not a wall you have to climb."
+    </blockquote>
+
+    <!-- Section: added content -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-blue-500 pl-4">
+      The Catch: It's a Learning Curve
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      Let's be honest — TypeScript has a learning curve. Generics, unions, and utility types can feel intimidating at first. But you don't need to master all of that on day one. Start with the basics: annotate a variable, type a function's parameters and return value, and let the compiler nudge you when something's off. The advanced stuff comes naturally as your projects grow.
+    </p>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      The other catch is that the error messages can be long and overwhelming at first. Don't let that scare you. Most of the time, the real problem is on the first line — the rest is the compiler showing you everything it's worried about. Read it top to bottom, fix the first thing, and usually the rest resolves itself.
+    </p>
+
+    <!-- Section: added content 2 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-blue-500 pl-4">
+      What Real Projects Taught Me
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      The best way to learn TypeScript is to use it on something real. A small API call, a form with validation, a component that receives props — these are perfect places to start. When you type your own data, you start catching mistakes you'd never notice in plain JavaScript. That's when it clicks: the types aren't slowing you down, they're protecting you.
+    </p>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      It also makes your code self-documenting. When you come back to a file weeks later, the types tell you exactly what each function expects and returns. No need to guess. That alone is worth the setup time.
+    </p>
+
+    <!-- Section 3 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-blue-500 pl-4">
+      Key Takeaways
+    </h2>
+    <ul class="space-y-3 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      <li class="flex gap-2"><span class="text-blue-500 font-bold">→</span> TypeScript is the industry default now — new projects ship with it pre-configured.</li>
+      <li class="flex gap-2"><span class="text-blue-500 font-bold">→</span> It catches errors at write-time instead of runtime, which saves hours of debugging.</li>
+      <li class="flex gap-2"><span class="text-blue-500 font-bold">→</span> Learn JavaScript first, then add types — they build on the same foundation.</li>
+      <li class="flex gap-2"><span class="text-blue-500 font-bold">→</span> Start small: annotate variables and functions before diving into generics.</li>
+    </ul>
+
+    <!-- Conclusion -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-blue-500 pl-4">
+      Wrapping Up
+    </h2>
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+      TypeScript becoming the default isn't a fad — it's the ecosystem maturing. For a developer still building fundamentals, the move isn't to skip it, it's to get there at the right time: after JavaScript, before you start tackling big projects. Master the language first, then let the types make you faster, not slower.
+    </p>
+
+    <!-- Like + comment count row -->
+    <div class="mt-12 pt-8 border-t border-black/10 dark:border-white/10 flex items-center justify-center gap-6">
+      <button id="like-btn" class="flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 font-semibold text-sm transition-all duration-300 hover:scale-105 hover:border-pink-400/50 hover:shadow-lg" aria-pressed="false">
+        <span id="like-icon" class="text-xl">🤍</span>
+        <span>Like</span>
+        <span id="like-count" class="text-gray-500 dark:text-gray-400 font-bold">0</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- Comments -->
+  <section class="max-w-3xl mx-auto px-6 pb-16" data-aos="fade-up">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-blue-500 pl-4">Comments <span id="comment-total" class="text-base text-gray-500 dark:text-gray-400 font-medium"></span></h2>
+
+    <form id="comment-form" class="space-y-3 mb-8">
+      <input id="c-name" type="text" placeholder="Your name (optional)" maxlength="50"
+        class="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm outline-none focus:border-blue-500 transition">
+      <textarea id="c-body" rows="3" placeholder="Leave a comment..." maxlength="1000" required
+        class="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm outline-none focus:border-blue-500 transition resize-none"></textarea>
+      <button type="submit"
+        class="px-6 py-2.5 rounded-full bg-blue-400 text-white font-semibold text-sm hover:bg-blue-500 transition">Post comment</button>
+    </form>
+
+    <div id="comment-list" class="space-y-4"></div>
+    <p id="no-comments" class="text-center text-gray-500 dark:text-gray-400 text-sm py-6">No comments yet — be the first 🚀</p>
+  </section>
+
+  <!-- Related posts -->
+  <section class="max-w-4xl mx-auto px-6 pb-16">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Related Reads</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="portfolio.html" class="group p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200/80 dark:border-white/5 hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg">
+        <span class="text-xs font-semibold text-blue-500 uppercase">Projects</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white text-sm group-hover:text-blue-500 transition">Build Your Portfolio Before You Feel Ready</h3>
+      </a>
+      <a href="tailwind-journey.html" class="group p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200/80 dark:border-white/5 hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg">
+        <span class="text-xs font-semibold text-blue-500 uppercase">Journey</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white text-sm group-hover:text-blue-500 transition">I Learned Tailwind Before I Learned CSS</h3>
+      </a>
+      <a href="typescript.html" class="group p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200/80 dark:border-white/5 hover:border-blue-500/40 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg">
+        <span class="text-xs font-semibold text-blue-500 uppercase">News</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white text-sm group-hover:text-blue-500 transition">Why TypeScript Is Becoming the Default</h3>
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // ===== SETUP: put YOUR Supabase URL + anon key here =====
+    const SUPABASE_URL ="https://bedyxwywkxwhkiiufvnm.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_0PA87lz20zFKUcDsvUdURg_X3f51fJ7";
+    const POST_KEY = "why-typescript";
+    const BASE = SUPABASE_URL.replace(/\/$/, "");
+    const LIKE_FN = `${BASE}/functions/v1/like-post`;
+    const COMMENT_FN = `${BASE}/functions/v1/post-comments`;
+
+    // ---- theme ----
+    const themeBtn = document.getElementById("theme-btn");
+    const html = document.documentElement;
+    if (localStorage.theme !== "light") html.classList.add("dark");
+    function renderThemeBtn() { themeBtn.textContent = html.classList.contains("dark") ? "🌙" : "☀️"; }
+    themeBtn.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      localStorage.theme = html.classList.contains("dark") ? "dark" : "light";
+      renderThemeBtn();
+    });
+    renderThemeBtn();
+
+    // ---- scramble effect (long, chaotic) ----
+    (function scrambleInit() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#*!<>-_/[]{}—=+^?";
+      document.querySelectorAll("[data-scramble]").forEach(el => {
+        const value = el.dataset.value;
+        const scramble = () => {
+          let out = "";
+          for (let i = 0; i < value.length; i++) out += chars[Math.floor(Math.random() * chars.length)];
+          el.textContent = out;
+        };
+        const reveal = () => {
+          let i = 0;
+          const iv = setInterval(() => {
+            let out = "";
+            for (let j = 0; j < value.length; j++) out += j < i ? value[j] : chars[Math.floor(Math.random() * chars.length)];
+            el.textContent = out;
+            i++;
+            if (i > value.length) { clearInterval(iv); el.textContent = value; }
+          }, 70);
+        };
+        scramble();
+        setTimeout(reveal, 600);
+      });
+    })();
+
+    // ---- LIKES ----
+    const likeBtn = document.getElementById("like-btn");
+    const likeIcon = document.getElementById("like-icon");
+    const likeCount = document.getElementById("like-count");
+    const likedKey = "liked-" + POST_KEY;
+
+    function renderLikes() {
+      const liked = localStorage.getItem(likedKey) === "true";
+      likeIcon.textContent = liked ? "🩷" : "🤍";
+      likeBtn.classList.toggle("border-pink-400/50", liked);
+      likeBtn.classList.toggle("text-pink-500", liked);
+      likeBtn.setAttribute("aria-pressed", liked);
+    }
+
+    async function fetchLikes() {
+      try {
+        const r = await fetch(`${LIKE_FN}?post_key=${POST_KEY}`);
+        const d = await r.json();
+        likeCount.textContent = d.count ?? 0;
+      } catch {}
+    }
+
+    likeBtn.addEventListener("click", async () => {
+      const liked = localStorage.getItem(likedKey) !== "true";
+      localStorage.setItem(likedKey, liked);
+      renderLikes();
+      try {
+        const r = await fetch(`${LIKE_FN}?post_key=${POST_KEY}`, { method: "POST" });
+        const d = await r.json();
+        if (d.count !== undefined) likeCount.textContent = d.count;
+      } catch {}
+    });
+
+    // ---- COMMENTS ----
+    const form = document.getElementById("comment-form");
+    const nameInput = document.getElementById("c-name");
+    const bodyInput = document.getElementById("c-body");
+    const listEl = document.getElementById("comment-list");
+    const noComments = document.getElementById("no-comments");
+    const totalEl = document.getElementById("comment-total");
+
+    function timeAgo(iso) {
+      const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+      if (s < 60) return "just now";
+      const m = Math.floor(s / 60); if (m < 60) return m + "m ago";
+      const h = Math.floor(m / 60); if (h < 24) return h + "h ago";
+      const d = Math.floor(h / 24); if (d < 30) return d + "d ago";
+      return new Date(iso).toLocaleDateString();
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, s => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[s]));
+    }
+
+    async function loadComments() {
+      try {
+        const r = await fetch(`${COMMENT_FN}?post_key=${POST_KEY}`);
+        const d = await r.json();
+        const comments = d.comments || [];
+        totalEl.textContent = comments.length ? "(" + comments.length + ")" : "";
+        noComments.style.display = comments.length ? "none" : "block";
+        listEl.innerHTML = comments.map(c => `
+          <div class="p-4 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/5">
+            <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-1">
+              <span class="font-bold text-blue-500">${escapeHtml(c.name)}</span>
+              <span>·</span>
+              <span>${timeAgo(c.created_at)}</span>
+            </div>
+            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">${escapeHtml(c.comment)}</p>
+          </div>
+        `).join("");
+      } catch {}
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const comment = bodyInput.value.trim();
+      if (!comment) return;
+      const name = nameInput.value.trim() || "Anonymous";
+      try {
+        await fetch(`${COMMENT_FN}?post_key=${POST_KEY}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, comment }),
+        });
+        bodyInput.value = "";
+        loadComments();
+      } catch {}
+    });
+
+    // init
+    fetchLikes();
+    renderLikes();
+    loadComments();
+  </script>
+  <script>AOS.init();</script>
+</body>
+</html>

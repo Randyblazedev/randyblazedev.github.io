@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="I Learned Tailwind CSS Before I Properly Learned CSS | RandyBlazeDev">
+  <meta property="og:description" content="A personal story about learning Tailwind CSS before properly learning CSS, how building projects helped me understand frontend development, and why there is no single perfect path to becoming a developer.">
+  <meta property="og:url" content="https://randy-blaze.vercel.app/blog/tailwind-journey.html">
+  <meta property="og:image" content="https://randy-blaze.vercel.app/images/journey/tailwind.jpg">
+  <meta property="og:site_name" content="RandyBlazeDev">
+  <meta property="article:author" content="Randy Blaze">
+  <meta property="article:published_time" content="2026-08-06">
+  <meta property="article:section" content="My Journey">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="I Learned Tailwind CSS Before I Properly Learned CSS | RandyBlazeDev">
+  <meta name="twitter:description" content="My journey of learning Tailwind CSS first, then understanding CSS fundamentals, building projects, and improving my frontend skills.">
+  <meta name="twitter:image" content="https://randy-blaze.vercel.app/images/journey/tailwind.jpg">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>I Learned Tailwind CSS Before CSS — RandyBlazeDev</title>
+  <style type="text/tailwindcss">
+    @variant dark (&:where(.dark, .dark *));
+  </style>
+</head>
+<body class="bg-slate-100 dark:bg-gray-950 font-['JetBrains_Mono']">
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 w-full border-b border-black/5 dark:border-white/5 bg-white/80 dark:bg-gray-950/70 backdrop-blur-md px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <button id="theme-btn" class="px-3 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-yellow-300 text-base transition hover:scale-105">🌙</button>
+      <a href="../blog.html" class="text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition font-medium">← Back to Blog</a>
+    </div>
+  </nav>
+
+  <!-- Article -->
+  <main class="max-w-3xl mx-auto px-6 py-12" data-aos="fade-up">
+    <!-- Meta -->
+    <div class="flex items-center flex-wrap gap-3 text-xs text-gray-500 dark:text-gray-400 mb-6">
+      <span class="px-3 py-1 rounded-full bg-purple-400/10 text-purple-600 dark:text-purple-400 font-semibold uppercase tracking-wide">✨ My Journey</span>
+      <span>Aug 6, 2026</span>
+      <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+      <span>6 min read</span>
+    </div>
+
+    <!-- Title with scramble -->
+    <h1 data-scramble data-value="I Learned Tailwind Before I Learned CSS" class="text-3xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+      I Learned Tailwind Before I Learned CSS
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-lg sm:text-xl text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+      When people ask how I learned Tailwind CSS, they expect a perfect roadmap. That's not what happened. This is the messy, real version.
+    </p>
+
+    <!-- Opening narrative -->
+    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      When people ask how I learned Tailwind CSS, they usually expect me to say I followed a perfect roadmap or spent weeks studying documentation. That is not what happened. My journey into frontend development was different.
+    </p>
+
+    <!-- Chapter 1 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-purple-500 pl-4">
+      Chapter 1 — HTML First
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      I started learning HTML through FreeCodeCamp. It helped me understand how websites are structured and introduced me to the foundation of the web. I learned how to create headings, paragraphs, images, links, forms, and the basic structure behind webpages.
+    </p>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      After becoming comfortable with HTML, I wanted to make my websites look better. That is when I discovered Tailwind CSS.
+    </p>
+
+    <!-- Chapter 2 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-purple-500 pl-4">
+      Chapter 2 — The First Class
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      I added the Tailwind CDN to my HTML project, refreshed the browser, and typed my first utility class:
+    </p>
+
+    <pre class="bg-gray-900 dark:bg-black text-gray-100 rounded-lg p-5 font-mono text-sm leading-relaxed overflow-x-auto mb-6 shadow-lg"><code>&lt;div class="bg-blue-400"&gt;Hello&lt;/div&gt;</code></pre>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      I saved the file and refreshed the page. The background turned blue. It was a simple moment, but it made me curious about what else I could build.
+    </p>
+
+    <blockquote class="border-l-4 border-purple-500 pl-4 italic text-gray-600 dark:text-gray-400 my-8">
+      "It was a simple moment — the background turned blue — but it made me curious about what else I could build."
+    </blockquote>
+
+    <!-- Chapter 3 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-purple-500 pl-4">
+      Chapter 3 — Building by Doing
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      I started experimenting with more classes. I learned how to add spacing, rounded corners, shadows, Flexbox, and Grid. I was not just memorizing classes. I was learning by creating things. Every project taught me something new.
+    </p>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      But after some time, I realized that while I could build interfaces with Tailwind CSS, I did not fully understand the CSS concepts behind those utilities.
+    </p>
+
+    <!-- Milestone -->
+    <div class="bg-purple-400/10 dark:bg-purple-500/10 border-l-4 border-purple-500 p-4 rounded-xl my-8">
+      <p class="text-purple-600 dark:text-purple-400 font-bold text-sm mb-1">🏁 Realization</p>
+      <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">I could build interfaces with Tailwind, but I didn't understand the CSS behind it. That's when I decided to learn CSS properly.</p>
+    </div>
+
+    <!-- Chapter 4 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-purple-500 pl-4">
+      Chapter 4 — Learning CSS Properly
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      I started learning CSS with Claude as my mentor and focused on understanding the fundamentals behind modern web design. Suddenly, Tailwind CSS became much easier to understand. The utility classes I was using were no longer just shortcuts. I understood the ideas behind them.
+    </p>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      After improving my CSS skills, I started taking on Frontend Mentor challenges. Those challenges helped me practice building real designs, improving responsive layouts, understanding spacing, and writing cleaner code. Each challenge pushed me to improve.
+    </p>
+
+    <!-- Chapter 5 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-purple-500 pl-4">
+      Chapter 5 — The Lesson
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      Looking back, my learning path was not the traditional one. Many people learn HTML → CSS → Tailwind CSS. My journey was HTML → Tailwind CSS → CSS → Frontend Mentor → More frontend skills.
+    </p>
+
+    <div class="bg-purple-400/10 dark:bg-purple-500/10 border-l-4 border-purple-500 p-4 rounded-xl my-8">
+      <p class="text-purple-600 dark:text-purple-400 font-bold text-sm mb-1">🧠 Developer note</p>
+      <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">There is no single perfect way to learn programming. The most important thing is to keep building, experimenting, and improving. Projects can teach lessons that tutorials cannot always provide.</p>
+    </div>
+
+    <!-- Chapter 6 -->
+    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-4 border-l-4 border-purple-500 pl-4">
+      Chapter 6 — The Journey Continues
+    </h2>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      Today, I am continuing to improve my frontend skills, build projects, and share my journey through this blog. My next big chapter is JavaScript, and I am excited to see where this path leads.
+    </p>
+
+    <p class="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      If you are starting your own coding journey, do not wait until you know everything before building. Sometimes, one small thing like <code class="bg-gray-200 dark:bg-gray-800 rounded px-1.5 py-0.5 text-sm text-purple-500">bg-blue-400</code> can be the beginning of something much bigger.
+    </p>
+
+    <p class="text-purple-600 dark:text-purple-400 font-bold text-center mt-6">Thanks for reading. 🚀</p>
+
+    <!-- CTA -->
+    <div class="mt-10 p-6 rounded-2xl bg-purple-400/10 dark:bg-purple-500/10 border border-purple-500/20 text-center" data-aos="fade-up">
+      <p class="text-gray-900 dark:text-white font-bold mb-2">Enjoyed this story?</p>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Follow my journey and see what I build next.</p>
+      <a href="https://github.com/Randyblazedev" target="_blank" class="inline-block px-6 py-2.5 rounded-full bg-purple-500 dark:bg-purple-400 text-white dark:text-gray-950 font-semibold text-sm hover:bg-purple-600 dark:hover:bg-purple-500 transition">Follow on GitHub</a>
+    </div>
+
+    <!-- Like button -->
+    <div class="mt-10 pt-8 border-t border-black/10 dark:border-white/10 flex items-center justify-center" data-aos="fade-up">
+      <button id="like-btn" class="flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 font-semibold text-sm transition-all duration-300 hover:scale-105 hover:border-pink-400/50 hover:shadow-lg" aria-pressed="false">
+        <span id="like-icon" class="text-xl">🤍</span>
+        <span>Like</span>
+        <span id="like-count" class="text-gray-500 dark:text-gray-400 font-bold">0</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- Comments -->
+  <section class="max-w-3xl mx-auto px-6 pb-16" data-aos="fade-up">
+    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-l-4 border-purple-500 pl-4">Comments <span id="comment-total" class="text-base text-gray-500 dark:text-gray-400 font-medium"></span></h2>
+
+    <form id="comment-form" class="space-y-3 mb-8">
+      <input id="c-name" type="text" placeholder="Your name (optional)" maxlength="50"
+        class="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm outline-none focus:border-purple-500 transition">
+      <textarea id="c-body" rows="3" placeholder="Leave a comment..." maxlength="1000" required
+        class="w-full px-4 py-3 rounded-xl bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm outline-none focus:border-purple-500 transition resize-none"></textarea>
+      <button type="submit" class="px-6 py-2.5 rounded-full bg-purple-500 dark:bg-purple-400 text-white dark:text-gray-950 font-semibold text-sm hover:bg-purple-600 dark:hover:bg-purple-500 transition">Post comment</button>
+    </form>
+
+    <div id="comment-list" class="space-y-4"></div>
+    <p id="no-comments" class="text-center text-gray-500 dark:text-gray-400 text-sm py-6">No comments yet — be the first 🚀</p>
+  </section>
+
+  <!-- Related posts -->
+  <section class="max-w-4xl mx-auto px-6 pb-16">
+    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Related Reads</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a href="curiosity.html" class="group p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200/80 dark:border-white/5 hover:border-purple-500/40 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg">
+        <span class="text-xs font-semibold text-purple-600 dark:text-purple-400 uppercase">Journey</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white text-sm group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">From Curiosity to Code</h3>
+      </a>
+      <a href="portfolio.html" class="group p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200/80 dark:border-white/5 hover:border-purple-500/40 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg">
+        <span class="text-xs font-semibold text-purple-600 dark:text-purple-400 uppercase">Tutorial</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white text-sm group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Build Your Portfolio Before You Feel Ready</h3>
+      </a>
+      <a href="news-ai-tools.html" class="group p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-gray-200/80 dark:border-white/5 hover:border-purple-500/40 hover:-translate-y-1 transition-all duration-300 hover:shadow-lg">
+        <span class="text-xs font-semibold text-purple-600 dark:text-purple-400 uppercase">News</span>
+        <h3 class="mt-2 font-bold text-gray-900 dark:text-white text-sm group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">The Rise of AI Tools in Web Development</h3>
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // ===== SETUP: put YOUR Supabase URL + anon key here =====
+    const SUPABASE_URL ="https://bedyxwywkxwhkiiufvnm.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_0PA87lz20zFKUcDsvUdURg_X3f51fJ7";
+    const POST_KEY = "tailwind-journey";
+    const BASE = SUPABASE_URL.replace(/\/$/, "");
+    const LIKE_FN = `${BASE}/functions/v1/like-post`;
+    const COMMENT_FN = `${BASE}/functions/v1/post-comments`;
+
+    // ---- theme ----
+    const themeBtn = document.getElementById("theme-btn");
+    const html = document.documentElement;
+    if (localStorage.theme !== "light") html.classList.add("dark");
+    function renderThemeBtn() { themeBtn.textContent = html.classList.contains("dark") ? "🌙" : "☀️"; }
+    themeBtn.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      localStorage.theme = html.classList.contains("dark") ? "dark" : "light";
+      renderThemeBtn();
+    });
+    renderThemeBtn();
+
+    // ---- scramble effect (long, chaotic) ----
+    (function scrambleInit() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#*!<>-_/[]{}—=+^?";
+      document.querySelectorAll("[data-scramble]").forEach(el => {
+        const value = el.dataset.value;
+        const scramble = () => {
+          let out = "";
+          for (let i = 0; i < value.length; i++) out += chars[Math.floor(Math.random() * chars.length)];
+          el.textContent = out;
+        };
+        const reveal = () => {
+          let i = 0;
+          const iv = setInterval(() => {
+            let out = "";
+            for (let j = 0; j < value.length; j++) out += j < i ? value[j] : chars[Math.floor(Math.random() * chars.length)];
+            el.textContent = out;
+            i++;
+            if (i > value.length) { clearInterval(iv); el.textContent = value; }
+          }, 70);
+        };
+        scramble();
+        setTimeout(reveal, 600);
+      });
+    })();
+
+    // ---- LIKES ----
+    const likeBtn = document.getElementById("like-btn");
+    const likeIcon = document.getElementById("like-icon");
+    const likeCount = document.getElementById("like-count");
+    const likedKey = "liked-" + POST_KEY;
+
+    function renderLikes() {
+      const liked = localStorage.getItem(likedKey) === "true";
+      likeIcon.textContent = liked ? "🩷" : "🤍";
+      likeBtn.classList.toggle("border-pink-400/50", liked);
+      likeBtn.classList.toggle("text-pink-500", liked);
+      likeBtn.setAttribute("aria-pressed", liked);
+    }
+
+    async function fetchLikes() {
+      try {
+        const r = await fetch(`${LIKE_FN}?post_key=${POST_KEY}`);
+        const d = await r.json();
+        likeCount.textContent = d.count ?? 0;
+      } catch {}
+    }
+
+    likeBtn.addEventListener("click", async () => {
+      const liked = localStorage.getItem(likedKey) !== "true";
+      localStorage.setItem(likedKey, liked);
+      renderLikes();
+      try {
+        const r = await fetch(`${LIKE_FN}?post_key=${POST_KEY}`, { method: "POST" });
+        const d = await r.json();
+        if (d.count !== undefined) likeCount.textContent = d.count;
+      } catch {}
+    });
+
+    // ---- COMMENTS ----
+    const form = document.getElementById("comment-form");
+    const nameInput = document.getElementById("c-name");
+    const bodyInput = document.getElementById("c-body");
+    const listEl = document.getElementById("comment-list");
+    const noComments = document.getElementById("no-comments");
+    const totalEl = document.getElementById("comment-total");
+
+    function timeAgo(iso) {
+      const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+      if (s < 60) return "just now";
+      const m = Math.floor(s / 60); if (m < 60) return m + "m ago";
+      const h = Math.floor(m / 60); if (h < 24) return h + "h ago";
+      const d = Math.floor(h / 24); if (d < 30) return d + "d ago";
+      return new Date(iso).toLocaleDateString();
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, s => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[s]));
+    }
+
+    async function loadComments() {
+      try {
+        const r = await fetch(`${COMMENT_FN}?post_key=${POST_KEY}`);
+        const d = await r.json();
+        const comments = d.comments || [];
+        totalEl.textContent = comments.length ? "(" + comments.length + ")" : "";
+        noComments.style.display = comments.length ? "none" : "block";
+        listEl.innerHTML = comments.map(c => `
+          <div class="p-4 rounded-2xl bg-white dark:bg-white/[0.03] border border-gray-200/80 dark:border-white/5">
+            <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-400 mb-1">
+              <span class="font-bold text-purple-600 dark:text-purple-400">${escapeHtml(c.name)}</span>
+              <span>·</span>
+              <span>${timeAgo(c.created_at)}</span>
+            </div>
+            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">${escapeHtml(c.comment)}</p>
+          </div>
+        `).join("");
+      } catch {}
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const comment = bodyInput.value.trim();
+      if (!comment) return;
+      const name = nameInput.value.trim() || "Anonymous";
+      try {
+        await fetch(`${COMMENT_FN}?post_key=${POST_KEY}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, comment }),
+        });
+        bodyInput.value = "";
+        loadComments();
+      } catch {}
+    });
+
+    // init
+    fetchLikes();
+    renderLikes();
+    loadComments();
+  </script>
+  <script>AOS.init();</script>
+</body>
+</html>
