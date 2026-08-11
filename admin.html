@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Randy Blaze</title>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; background: #030712; color: #fff; min-height: 100vh; }
+    .hidden { display: none !important; }
+    * { box-sizing: border-box; }
+    .card { max-width: 420px; margin: 8vh auto; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 32px; }
+    .panel { max-width: 760px; margin: 40px auto; padding: 0 24px; }
+    input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; background: #030712; border: 1px solid rgba(255,255,255,.12); color: #fff; font-size: 14px; outline: none; margin-bottom: 12px; }
+    input:focus, textarea:focus { border-color: #3b82f6; }
+    button { padding: 12px 18px; border-radius: 12px; border: none; font-weight: 600; font-size: 14px; cursor: pointer; }
+    .btn-blue { background: #3b82f6; color: #fff; width: 100%; }
+    .btn-blue:hover { background: #2563eb; }
+    .err { color: #f87171; font-size: 13px; margin-top: 10px; text-align: center; }
+    .ok { color: #34d399; font-size: 13px; margin-top: 10px; text-align: center; }
+    .row { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .row .meta { font-size: 12px; color: #9ca3af; }
+    .btn-sm { padding: 6px 12px; font-size: 12px; border-radius: 8px; background: rgba(255,255,255,.06); color: #d1d5db; border: 1px solid rgba(255,255,255,.12); }
+    .btn-red { background: rgba(239,68,68,.12); color: #fca5a5; border: 1px solid rgba(239,68,68,.3); }
+    .btn-green { background: rgba(52,211,153,.12); color: #6ee7b7; border: 1px solid rgba(52,211,153,.3); }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="login-screen">
+    <div class="card">
+      <h1 style="margin:0 0 4px;font-size:20px;text-align:center">Admin Login</h1>
+      <p style="margin:0 0 24px;text-align:center;color:#9ca3af;font-size:13px">Sign in with your Supabase account</p>
+      <form id="login-form">
+        <input id="login-email" type="email" placeholder="Email" required />
+        <input id="login-pass" type="password" placeholder="Password" required />
+        <button type="submit" class="btn-blue">Sign In</button>
+      </form>
+      <p id="login-msg" class="err hidden"></p>
+    </div>
+  </div>
+
+  <!-- ADMIN -->
+  <div id="admin-screen" class="hidden">
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+        <h1 style="font-size:22px;margin:0">Posts</h1>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span id="admin-email" style="color:#9ca3af;font-size:13px"></span>
+          <button class="btn-sm" id="logout-btn">Logout</button>
+        </div>
+      </div>
+
+      <form id="post-form" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:24px;margin-bottom:28px">
+        <h2 style="font-size:17px;margin:0 0 16px">New post</h2>
+        <input id="title" type="text" placeholder="Title" required />
+        <input id="slug" type="text" placeholder="Slug (auto from title, or type custom)" />
+        <input id="category" type="text" placeholder="Category (journey, tutorials, news, projects)" />
+        <input id="excerpt" type="text" placeholder="Excerpt (short summary)" required />
+        <textarea id="content" rows="8" placeholder="Post content (supports HTML)" required style="resize:vertical"></textarea>
+        <div style="display:flex;gap:10px">
+          <button type="submit" class="btn-green" style="color:#065f46">Publish</button>
+          <button type="button" id="cancel-edit" class="btn-sm hidden" style="align-self:center">Cancel edit</button>
+        </div>
+        <p id="form-msg" class="ok hidden"></p>
+      </form>
+
+      <h2 style="font-size:17px;margin:0 0 14px">All posts</h2>
+      <div id="post-list"></div>
+    </div>
+  </div>
+
+  <script>
+    // ===== CONFIG =====
+    const SUPABASE_URL = "https://bedyxwywkxwhkiiufvnm.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_0PA87lz20zFKUcDsvUdURg_X3f51fJ7";
+
+    // State
+    let accessToken = null;
+    let editingId = null;
+    const ls = (id) => document.getElementById(id);
+
+    // ===== Plain fetch helpers — no library needed =====
+    function authHeaders(extra = {}) {
+      const h = { "apikey": SUPABASE_KEY, "Content-Type": "application/json", ...extra };
+      if (accessToken) h["Authorization"] = "Bearer " + accessToken;
+      return h;
+    }
+
+    async function signIn(email, password) {
+      // Supabase auth token endpoint (GoTrue)
+      const r = await fetch(SUPABASE_URL + "/auth/v1/token?grant_type=password", {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await r.json();
+      if (!r.ok || !data.access_token) {
+        throw new Error(data.error_description || data.msg || data.error || ("HTTP " + r.status));
+      }
+      return data;
+    }
+
+    async function getPosts() {
+      const r = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=created_at.desc", {
+        headers: authHeaders(),
+      });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.message || "HTTP " + r.status);
+      return data;
+    }
+
+    async function insertPost(post) {
+      const r = await fetch(SUPABASE_URL + "/rest/v1/posts", {
+        method: "POST",
+        headers: authHeaders({ Prefer: "return=representation" }),
+        body: JSON.stringify(post),
+      });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.message || "HTTP " + r.status);
+      return data;
+    }
+
+    async function updatePost(id, post) {
+      const r = await fetch(SUPABASE_URL + "/rest/v1/posts?id=eq." + id, {
+        method: "PATCH",
+        headers: authHeaders({ Prefer: "return=representation" }),
+        body: JSON.stringify(post),
+      });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.message || "HTTP " + r.status);
+      return data;
+    }
+
+    async function deletePost(id) {
+      const r = await fetch(SUPABASE_URL + "/rest/v1/posts?id=eq." + id, {
+        method: "DELETE",
+        headers: authHeaders(),
+      });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+    }
+
+    // ===== UI =====
+    function showAdmin(email) {
+      ls("admin-email").textContent = email;
+      ls("login-screen").classList.add("hidden");
+      ls("admin-screen").classList.remove("hidden");
+      refreshPosts();
+    }
+
+    function showLogin() {
+      ls("login-screen").classList.remove("hidden");
+      ls("admin-screen").classList.add("hidden");
+    }
+
+    function setLoginMsg(text) {
+      const el = ls("login-msg");
+      el.textContent = text;
+      el.classList.remove("hidden");
+    }
+
+    function setFormMsg(text, ok = true) {
+      const el = ls("form-msg");
+      el.textContent = text;
+      el.className = ok ? "ok" : "err";
+      el.classList.remove("hidden");
+    }
+
+    async function refreshPosts() {
+      const listEl = ls("post-list");
+      let posts;
+      try { posts = await getPosts(); }
+      catch (e) { listEl.innerHTML = '<p style="color:#9ca3af;font-size:13px">Could not load posts: ' + e.message + "</p>"; return; }
+
+      if (!posts || !posts.length) { listEl.innerHTML = '<p style="color:#9ca3af;font-size:13px">No posts yet.</p>'; return; }
+
+      listEl.innerHTML = "";
+      posts.forEach(p => {
+        const row = document.createElement("div");
+        row.className = "row";
+        row.innerHTML = `
+          <div style="min-width:0">
+            <div style="font-size:14px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.title}</div>
+            <div class="meta">${p.category || ""} · ${p.date || ""} · /${p.slug}</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-shrink:0">
+            <button class="btn-sm" data-edit="${p.id}">Edit</button>
+            <button class="btn-sm btn-red" data-del="${p.id}">Delete</button>
+          </div>`;
+        listEl.appendChild(row);
+      });
+
+      listEl.querySelectorAll("[data-del]").forEach(btn => {
+        btn.addEventListener("click", async () => {
+          if (!confirm("Delete this post?")) return;
+          try { await deletePost(btn.dataset.del); setFormMsg("Post deleted"); refreshPosts(); }
+          catch (e) { setFormMsg("Delete failed: " + e.message, false); }
+        });
+      });
+
+      listEl.querySelectorAll("[data-edit]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const p = posts.find(x => x.id === btn.dataset.edit);
+          if (!p) return;
+          editingId = p.id;
+          ls("title").value = p.title;
+          ls("slug").value = p.slug;
+          ls("category").value = p.category || "";
+          ls("excerpt").value = p.excerpt;
+          ls("content").value = p.content;
+          ls("cancel-edit").classList.remove("hidden");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    }
+
+    function resetForm() {
+      editingId = null;
+      ls("post-form").reset();
+      ls("cancel-edit").classList.add("hidden");
+      ls("form-msg").classList.add("hidden");
+    }
+
+    // ===== Events =====
+    ls("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = ls("login-email").value.trim();
+      const password = ls("login-pass").value;
+      try {
+        const data = await signIn(email, password);
+        accessToken = data.access_token;
+        showAdmin(data.user && data.user.email ? data.user.email : email);
+      } catch (err) {
+        setLoginMsg(err.message);
+      }
+    });
+
+    ls("post-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const title = ls("title").value.trim();
+      const slugIn = ls("slug").value.trim();
+      const slug = (slugIn || title).toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+      const category = ls("category").value.trim();
+      const excerpt = ls("excerpt").value.trim();
+      const content = ls("content").value;
+      if (!title || !slug || !excerpt || !content) { setFormMsg("Title, slug, excerpt and content are required", false); return; }
+      try {
+        if (editingId) {
+          await updatePost(editingId, { title, slug, category, excerpt, content });
+          setFormMsg("Post updated");
+        } else {
+          await insertPost({ title, slug, category, excerpt, content, date: new Date().toISOString().slice(0, 10) });
+          setFormMsg("Post published");
+        }
+        resetForm();
+        refreshPosts();
+      } catch (err) {
+        setFormMsg(err.message, false);
+      }
+    });
+
+    ls("cancel-edit").addEventListener("click", resetForm);
+    ls("logout-btn").addEventListener("click", () => {
+      accessToken = null;
+      resetForm();
+      showLogin();
+    });
+  </script>
+</body>
+</html>
