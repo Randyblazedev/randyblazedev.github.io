@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="hu2gXxiDGKF8uGCfcbgW7/aVWJHP4_q7dKrjJmdz9W_w" />
+  <!-- SEO -->
+  <meta name="description" content="Read RandyBlazeDev developer stories, frontend tutorials, and technology news. Follow the journey of building projects, learning new skills, and exploring modern web development.">
+  <meta name="keywords" content="RandyBlazeDev blog, frontend developer blog, web development tutorials, coding journey, tech news, HTML CSS Tailwind JavaScript">
+  <meta name="author" content="Randy Blaze">
+  <link rel="canonical" href="https://randy-blaze.vercel.app/blog.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="RandyBlazeDev Blog | Journey, Tutorials & Tech News">
+  <meta property="og:description" content="Explore developer journeys, frontend tutorials, and the latest technology news from RandyBlazeDev. Learn, build, and grow as a developer.">
+  <meta property="og:url" content="https://randy-blaze.vercel.app/blog.html">
+  <meta property="og:image" content="https://randy-blaze.vercel.app/images/blog-cover.jpg">
+  <meta property="og:site_name" content="RandyBlazeDev">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RandyBlazeDev Blog | Journey, Tutorials & Tech News">
+  <meta name="twitter:description" content="Developer stories, frontend tutorials, and technology news covering coding, projects, and the journey of becoming a better developer.">
+  <meta name="twitter:image" content="https://randy-blaze.vercel.app/images/blog-cover.jpg">
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "RandyBlazeDev Blog",
+    "description": "Developer stories, frontend tutorials, and technology news from Randy Blaze.",
+    "url": "https://randy-blaze.vercel.app/blog.html",
+    "author": { "@type": "Person", "name": "Randy Blaze" }
+  }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Developer Blog — RandyBlazeDev</title>
+  <style type="text/tailwindcss">
+    @variant dark (&:where(.dark, .dark *));
+  </style>
+</head>
+<body class="bg-slate-100 dark:bg-gray-950 font-['JetBrains_Mono']">
+  <!-- Nav -->
+  <nav class="sticky top-0 z-50 w-full border-b border-black/5 dark:border-white/5 bg-white/80 dark:bg-gray-950/70 backdrop-blur-md px-6 py-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <button id="theme-btn" class="px-3 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-700 dark:text-yellow-300 text-base transition hover:scale-105">🌙</button>
+      <a href="index.html" class="text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-500 transition font-medium">← Back to home</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <h1 data-scramble data-value="Developer Blog" class="text-4xl text-center font-bold text-blue-400 mt-8" data-aos="fade-up">Developer Blog</h1>
+  <p class="text-center mt-2 font-bold mb-6 text-xl text-gray-900 dark:text-white" data-aos="fade-up">Stories, tutorials and tech news</p>
+
+  <!-- Filter buttons -->
+  <div class="flex flex-wrap justify-center gap-3 mb-6 px-4" data-aos="fade-up">
+    <button class="filter-btn px-5 py-2 rounded-full bg-blue-400 text-white transition duration-300 hover:scale-105" data-category="all">All</button>
+    <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-900 dark:text-white transition duration-300 hover:bg-blue-400 hover:text-white hover:scale-105" data-category="journey">My Journey</button>
+    <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-900 dark:text-white transition duration-300 hover:bg-blue-400 hover:text-white hover:scale-105" data-category="projects">Projects</button>
+    <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-900 dark:text-white transition duration-300 hover:bg-blue-400 hover:text-white hover:scale-105" data-category="tutorials">Tutorials</button>
+    <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 dark:bg-slate-800 text-gray-900 dark:text-white transition duration-300 hover:bg-blue-400 hover:text-white hover:scale-105" data-category="news">News</button>
+  </div>
+
+  <p id="no-blogs" class="hidden text-center text-gray-500 dark:text-gray-400 text-xl mt-6">No blogs found in this category 🚀</p>
+
+  <!-- Cards (rendered from Supabase) -->
+  <section class="max-w-5xl mx-auto p-4 grid md:grid-cols-2 gap-6">
+    <p id="loading" class="text-center text-gray-400 py-10 col-span-full">Loading posts...</p>
+    <div id="post-grid" class="grid md:grid-cols-2 gap-6 md:col-span-full"></div>
+  </section>
+
+  <script>
+    const SUPABASE_URL = "https://bedyxwywkxwhkiiufvnm.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_0PA87lz20zFKUcDsvUdURg_X3f51fJ7";
+
+
+    // theme
+    const html = document.documentElement;
+    const themeBtn = document.getElementById("theme-btn");
+    if (localStorage.theme !== "light") html.classList.add("dark");
+    function renderThemeBtn() { themeBtn.textContent = html.classList.contains("dark") ? "🌙" : "☀️"; }
+    themeBtn.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      localStorage.theme = html.classList.contains("dark") ? "dark" : "light";
+      renderThemeBtn();
+    });
+    renderThemeBtn();
+
+    const noBlogs = document.getElementById("no-blogs");
+    const grid = document.getElementById("post-grid");
+    const loading = document.getElementById("loading");
+    let posts = [];
+
+    // scramble on a single element
+    function scrambleEl(el) {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#*!<>-_/[]{}—=+^?";
+      const value = el.dataset.value;
+      const scramble = () => {
+        let out = "";
+        for (let i = 0; i < value.length; i++) out += chars[Math.floor(Math.random() * chars.length)];
+        el.textContent = out;
+      };
+      const reveal = () => {
+        let i = 0;
+        const iv = setInterval(() => {
+          let out = "";
+          for (let j = 0; j < value.length; j++) out += j < i ? value[j] : chars[Math.floor(Math.random() * chars.length)];
+          el.textContent = out;
+          i++;
+          if (i > value.length) { clearInterval(iv); el.textContent = value; }
+        }, 70);
+      };
+      scramble();
+      setTimeout(reveal, 600);
+    }
+
+    // estimate read time from content length
+    function readTime(p) {
+      const words = (p.content || "").trim().split(/\s+/).length;
+      const min = Math.max(1, Math.round(words / 200));
+      return min + "-" + (min + 1) + " min read";
+    }
+
+    function fmtDate(d) {
+      return new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+    }
+
+    function cardHTML(p) {
+      return `
+        <article class="blog-card group relative flex flex-col p-6 bg-white dark:bg-white/[0.02] border border-gray-200/80 dark:border-white/5 rounded-2xl transition-all duration-300 ease-out hover:border-indigo-500/30 hover:shadow-[0_15px_30px_rgba(99,102,241,0.04)]" data-category="${p.category}">
+          <div class="flex items-center gap-3 text-xs font-medium text-gray-500 dark:text-gray-400 mb-3">
+            <span>${fmtDate(p.date)}</span><span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700"></span><span>${readTime(p)}</span>
+          </div>
+          <h3 data-scramble data-value="${p.title}" class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-500 transition-colors duration-200 mb-2">
+            <a href="article.html?slug=${p.slug}" class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              ${p.title}
+            </a>
+          </h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">${p.excerpt}</p>
+          <div class="inline-flex items-center gap-1 text-xs font-semibold text-indigo-500 group-hover:translate-x-1 transition-transform duration-200">Read Article
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </div>
+        </article>
+      `;
+    }
+
+    function render(filter = "all") {
+      const f = posts.filter(p => filter === "all" || p.category === filter);
+      loading.remove();
+      noBlogs.classList.toggle("hidden", f.length !== 0);
+      grid.innerHTML = f.map(cardHTML).join("");
+      // re-apply scramble to freshly added cards
+      grid.querySelectorAll("[data-scramble]").forEach(scrambleEl);
+    }
+
+    async function loadPosts() {
+      try {
+        const res = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=created_at.desc", {
+          headers: { "apikey": SUPABASE_ANON_KEY, "Authorization": "Bearer " + SUPABASE_ANON_KEY }
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || "HTTP " + res.status);
+        posts = data;
+        render("all");
+      } catch (e) {
+        loading.textContent = "Could not load posts: " + e.message;
+      }
+    }
+
+    // filter
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        filterButtons.forEach(btn => {
+          btn.classList.remove("bg-blue-400", "text-white");
+          btn.classList.add("bg-gray-200", "dark:bg-slate-800", "text-gray-900", "dark:text-white");
+        });
+        button.classList.remove("bg-gray-200", "dark:bg-slate-800", "text-gray-900", "dark:text-white");
+        button.classList.add("bg-blue-400", "text-white");
+        render(button.dataset.category);
+      });
+    });
+
+    loadPosts();
+    AOS.init({ duration: 600 });
+  </script>
+</body>
+</html>
