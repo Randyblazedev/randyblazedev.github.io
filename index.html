@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark overflow-x-hidden">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RandyBlazeDev — Frontend Developer</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <meta name="description" content="Randy Blaze is a frontend developer building clean, responsive and user-friendly web experiences. Portfolio, projects, journey and more.">
+  <meta name="author" content="Randy Blaze">
+  <link rel="canonical" href="https://randy-blaze.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://randy-blaze.vercel.app/">
+  <meta property="og:title" content="RandyBlazeDev — Frontend Developer">
+  <meta property="og:description" content="I build modern websites that feel as good as they look.">
+  <meta property="og:image" content="https://randy-blaze.vercel.app/blaze.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RandyBlazeDev — Frontend Developer">
+  <meta name="twitter:description" content="I build modern websites that feel as good as they look.">
+  <meta name="twitter:image" content="https://randy-blaze.vercel.app/blaze.jpg">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @variant dark (&:where(.dark, .dark *));
+  </style>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    .polaroid { background:#fdf6f0; padding:12px 12px 38px 12px; border-radius:4px; transform:rotate(-3deg); box-shadow:0 20px 40px rgba(0,0,0,.4); transition:transform .4s ease; }
+    .polaroid:hover { transform:rotate(0deg) scale(1.02); }
+    .polaroid-caption { font-family:'Dancing Script',cursive; color:#3b82f6; text-align:center; font-size:20px; margin-top:6px; }
+    .code-window { background:#0b1220; border:1px solid rgba(255,255,255,.08); border-radius:12px; box-shadow:0 30px 60px rgba(0,0,0,.5); }
+    @media (prefers-reduced-motion: reduce) { * { animation:none !important; transition:none !important; } }
+  </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-700 dark:text-gray-300 font-['JetBrains_Mono'] overflow-x-hidden">
+  <!-- NAV -->
+  <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl rounded-2xl bg-white/80 dark:bg-gray-950/70 border border-gray-200 dark:border-white/5 backdrop-blur-xl shadow-lg shadow-black/5">
+    <div class="flex items-center justify-between px-5 py-3">
+      <a href="admin.html" class="font-['Inter'] font-bold tracking-tight text-gray-900 dark:text-white">RBlaze<span class="text-blue-500">.dev</span></a>
+      <div class="hidden md:flex items-center gap-6 text-xs font-['Inter'] font-medium text-gray-500 dark:text-gray-400">
+        <a href="#about" class="hover:text-gray-900 dark:hover:text-white transition">About</a>
+        <a href="#work" class="hover:text-gray-900 dark:hover:text-white transition">Work</a>
+        <a href="#journey" class="hover:text-gray-900 dark:hover:text-white transition">Journey</a>
+        <a href="#blog" class="hover:text-gray-900 dark:hover:text-white transition">Blog</a>
+        <a href="#contact" class="hover:text-gray-900 dark:hover:text-white transition">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="theme-btn" class="w-8 h-8 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center text-sm hover:bg-gray-200 dark:hover:bg-white/10 transition" aria-label="Toggle theme">🌙</button>
+        <a href="#contact" class="hidden sm:inline-flex px-4 py-2 rounded-full bg-blue-500 text-white text-xs font-['Inter'] font-semibold hover:bg-blue-600 transition">Let's Talk</a>
+        <button id="menu-btn" class="md:hidden text-2xl text-gray-900 dark:text-white" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden">
+      <div class="px-5 pb-5 flex flex-col gap-4 text-sm text-gray-600 dark:text-gray-300 border-t border-gray-200 dark:border-white/5 pt-4">
+        <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400">About</a>
+        <a href="#work" class="hover:text-blue-600 dark:hover:text-blue-400">Work</a>
+        <a href="#journey" class="hover:text-blue-600 dark:hover:text-blue-400">Journey</a>
+        <a href="#blog" class="hover:text-blue-600 dark:hover:text-blue-400">Blog</a>
+        <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="relative min-h-screen flex items-center overflow-hidden px-6 pt-24">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 items-center w-full">
+      <div class="relative z-10" data-aos="fade-right">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-300 text-[11px] font-['Inter'] font-medium mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> AVAILABLE FOR WEB PROJECTS
+        </span>
+        <h1 class="text-4xl md:text-6xl font-['Inter'] font-extrabold tracking-tight leading-[1.05] mb-6 text-gray-900 dark:text-white">
+          I build modern websites that feel as good as <span class="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-500 bg-clip-text text-transparent">they look</span>
+        </h1>
+        <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">I am Randy Blaze a frontend developer focused on building clean, responsive and user-friendly web experiences.</p>
+        <div class="flex flex-wrap gap-4 mb-8">
+          <a href="#work" class="px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-['Inter'] font-semibold transition hover:-translate-y-0.5">View My Work</a>
+          <a href="#about" class="px-6 py-3 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white font-['Inter'] font-semibold border border-gray-200 dark:border-white/10 transition hover:-translate-y-0.5">About Me</a>
+        </div>
+        <div class="flex items-center gap-4 text-gray-500 dark:text-gray-500">
+          <a href="https://github.com/Randyblazedev" target="_blank" rel="noopener" class="text-sm hover:text-gray-900 dark:hover:text-white transition" aria-label="GitHub">GitHub</a>
+          <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+          <a href="https://randy-blaze.vercel.app" class="text-sm hover:text-gray-900 dark:hover:text-white transition">Portfolio</a>
+          <span class="w-1 h-1 rounded-full bg-gray-400"></span>
+          <span class="text-sm"><span id="typed-line" class="text-blue-600 dark:text-blue-400"></span></span>
+        </div>
+      </div>
+
+      <div class="relative hidden lg:block" data-aos="fade-left">
+        <div class="relative">
+          <div class="polaroid w-56 mx-auto">
+            <img class="w-full rounded-sm object-cover" src="blaze.jpg" alt="Randy Blaze">
+            <p class="polaroid-caption font-bold">Randy Blaze</p>
+          </div>
+          <div class="code-window absolute -bottom-8 -left-6 w-64 p-4">
+            <div class="flex gap-1.5 mb-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
+            </div>
+            <pre class="text-[11px] leading-relaxed text-green-400"><code>$ whoami
+> randy-blaze
+$ skills
+> html css tailwind js
+$ status
+> building in public ⚡</code></pre>
+          </div>
+          <span class="absolute -top-2 -right-4 rotate-6 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-600 dark:text-purple-300 text-[10px] font-['Inter'] font-semibold">⚡ Frontend Dev</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK STATS -->
+  <section class="border-y border-gray-200 dark:border-white/5 bg-gray-100/50 dark:bg-white/[0.01]">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-200 dark:divide-white/5 py-10" data-aos="fade-up">
+      <div class="text-center px-4 py-2">
+        <div class="text-3xl font-['Inter'] font-extrabold text-gray-900 dark:text-white">09+</div>
+        <div class="text-xs text-gray-500 mt-1">Months building</div>
+      </div>
+      <div class="text-center px-4 py-2">
+        <div class="text-3xl font-['Inter'] font-extrabold text-gray-900 dark:text-white">03+</div>
+        <div class="text-xs text-gray-500 mt-1">Projects</div>
+      </div>
+      <div class="text-center px-4 py-2">
+        <div class="text-3xl font-['Inter'] font-extrabold text-gray-900 dark:text-white">100%</div>
+        <div class="text-xs text-gray-500 mt-1">Passion</div>
+      </div>
+      <div class="text-center px-4 py-2">
+        <div class="text-3xl font-['Inter'] font-extrabold text-gray-900 dark:text-white">∞</div>
+        <div class="text-xs text-gray-500 mt-1">Learning</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="max-w-6xl mx-auto px-6 py-24">
+    <span class="text-xs font-['Inter'] font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400" data-aos="fade-up">About</span>
+    <div class="grid lg:grid-cols-2 gap-14 items-start mt-8">
+      <div data-aos="fade-right">
+        <h2 class="text-3xl md:text-4xl font-['Inter'] font-bold text-gray-900 dark:text-white mb-8">A little about me.</h2>
+        <div class="polaroid w-56 mx-auto lg:mx-0">
+          <img class="w-full rounded-sm object-cover" src="blaze.jpg" alt="Randy Blaze portrait">
+          <p class="polaroid-caption font-bold">Randy Blaze</p>
+        </div>
+      </div>
+      <div class="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed" data-aos="fade-left">
+        <p>I started coding because he was curious about how bots were created. That curiosity introduced him to programming.</p>
+        <p>He later discovered web development and became fascinated by websites, UI design and interactive experiences.</p>
+        <p><strong class="text-gray-900 dark:text-white">Melvin Jones</strong> played an important role in introducing him to programming — opening the door to a whole new world.</p>
+        <p>Randy eventually started building his own websites and learning through practical projects.</p>
+        <p class="pt-2 text-sm"><span class="text-gray-500 dark:text-gray-500">Currently learning:</span> <span class="text-blue-600 dark:text-blue-400">JavaScript fundamentals + Supabase</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY TIMELINE -->
+  <section id="journey" class="max-w-4xl mx-auto px-6 py-24">
+    <span class="text-xs font-['Inter'] font-semibold uppercase tracking-[0.2em] text-purple-600 dark:text-purple-400" data-aos="fade-up">Journey</span>
+    <h2 class="text-3xl md:text-4xl font-['Inter'] font-bold text-gray-900 dark:text-white mt-4 mb-14" data-aos="fade-up">The Journey So Far</h2>
+    <div class="relative border-l border-gray-200 dark:border-white/10 pl-8 space-y-12">
+      <div class="relative" data-aos="fade-up">
+        <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-blue-500 border-4 border-gray-50 dark:border-gray-950"></span>
+        <div class="text-xs font-['Inter'] font-semibold text-blue-600 dark:text-blue-400">01 — Curiosity</div>
+        <p class="text-gray-600 dark:text-gray-400 mt-1">Curiosity about bots led to an interest in programming.</p>
+      </div>
+      <div class="relative" data-aos="fade-up">
+        <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-indigo-500 border-4 border-gray-50 dark:border-gray-950"></span>
+        <div class="text-xs font-['Inter'] font-semibold text-indigo-600 dark:text-indigo-400">02 — Discovering the Web</div>
+        <p class="text-gray-600 dark:text-gray-400 mt-1">Started exploring websites and became fascinated by UI and web experiences.</p>
+      </div>
+      <div class="relative" data-aos="fade-up">
+        <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-purple-500 border-4 border-gray-50 dark:border-gray-950"></span>
+        <div class="text-xs font-['Inter'] font-semibold text-purple-600 dark:text-purple-400">03 — Building</div>
+        <p class="text-gray-600 dark:text-gray-400 mt-1">Started creating personal websites and experimenting with frontend development.</p>
+      </div>
+      <div class="relative" data-aos="fade-up">
+        <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-purple-500 border-4 border-gray-50 dark:border-gray-950"></span>
+        <div class="text-xs font-['Inter'] font-semibold text-purple-600 dark:text-purple-400">04 — Learning</div>
+        <p class="text-gray-600 dark:text-gray-400 mt-1">Expanded into HTML, CSS, Tailwind CSS, JavaScript and development tools.</p>
+      </div>
+      <div class="relative" data-aos="fade-up">
+        <span class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-emerald-500 border-4 border-gray-50 dark:border-gray-950"></span>
+        <div class="text-xs font-['Inter'] font-semibold text-emerald-600 dark:text-emerald-400">05 — Building in Public</div>
+        <p class="text-gray-600 dark:text-gray-400 mt-1">Started creating real projects and documenting the learning journey.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="stack" class="border-y border-gray-200 dark:border-white/5 bg-gray-100/50 dark:bg-white/[0.01]">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <span class="text-xs font-['Inter'] font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400" data-aos="fade-up">Tech Stack</span>
+      <h2 class="text-3xl md:text-4xl font-['Inter'] font-bold text-gray-900 dark:text-white mt-4 mb-14" data-aos="fade-up">What I work with</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div data-aos="fade-up">
+          <div class="text-xs font-['Inter'] font-semibold uppercase tracking-widest text-gray-500 mb-5">Frontend</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-html5-plain colored"></i> HTML5</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-css3-plain colored"></i> CSS</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-tailwindcss-original colored"></i> Tailwind</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="text-xs font-['Inter'] font-semibold uppercase tracking-widest text-gray-500 mb-5">Tools</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-git-plain colored"></i> Git</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-github-original"></i> GitHub</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-vscode-plain colored"></i> VS Code</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300">⚙️ Acode</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-linux-plain"></i> Termux</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-vercel-original"></i> Vercel</span>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <div class="text-xs font-['Inter'] font-semibold uppercase tracking-widest text-gray-500 mb-5">Data / Backend</div>
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300"><i class="devicon-mysql-original colored"></i> MySQL</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300">⚡ Supabase</span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 text-sm text-gray-700 dark:text-gray-300">🔌 APIs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECT -->
+  <section id="featured" class="max-w-6xl mx-auto px-6 py-24 relative">
+    <div class="absolute top-1/3 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <span class="text-xs font-['Inter'] font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400" data-aos="fade-up">Featured Project</span>
+    <div class="grid lg:grid-cols-2 gap-12 items-center mt-10">
+      <div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-2xl" data-aos="fade-right">
+        <img src="blazewebguide.jpg" alt="BlazeWebGuide preview" class="w-full h-80 object-cover">
+      </div>
+      <div data-aos="fade-left">
+        <h3 class="text-3xl md:text-4xl font-['Inter'] font-bold text-gray-900 dark:text-white mb-4">BlazeWebGuide</h3>
+        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">An extensive multi-page tutorial database built to help early developers understand frontend concepts and build better websites.</p>
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="px-3 py-1 rounded text-xs bg-orange-500/20 text-orange-600 dark:text-orange-300">HTML</span>
+          <span class="px-3 py-1 rounded text-xs bg-blue-500/20 text-blue-600 dark:text-blue-300">CSS</span>
+          <span class="px-3 py-1 rounded text-xs bg-cyan-500/20 text-cyan-600 dark:text-cyan-300">TAILWIND</span>
+          <span class="px-3 py-1 rounded text-xs bg-green-500/20 text-green-600 dark:text-green-300">JAVASCRIPT</span>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <a href="https://blazewebguide.vercel.app" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-['Inter'] font-semibold transition hover:-translate-y-0.5">Live Preview</a>
+          <a href="https://github.com/Randyblazedev" target="_blank" rel="noopener" class="px-6 py-3 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white font-['Inter'] font-semibold border border-gray-200 dark:border-white/10 transition hover:-translate-y-0.5">View Source</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="work" class="max-w-6xl mx-auto px-6 pb-24">
+    <span class="text-xs font-['Inter'] font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400" data-aos="fade-up">Selected Work</span>
+    <h2 class="text-3xl md:text-4xl font-['Inter'] font-bold text-gray-900 dark:text-white mt-4 mb-14" data-aos="fade-up">More projects</h2>
+    <div class="space-y-16">
+      <div class="grid md:grid-cols-2 gap-10 items-center" data-aos="fade-up">
+        <div class="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 order-1">
+          <img src="studio.jpg" alt="EnlargeStudio preview" class="w-full h-56 object-cover hover:scale-105 transition duration-500">
+        </div>
+        <div class="order-2">
+          <div class="text-xs font-['Inter'] font-semibold text-gray-500 mb-2">PROJECT 02</div>
+          <h3 class="text-2xl font-['Inter'] font-bold text-gray-900 dark:text-white mb-3">EnlargeStudio</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-5">A local studio website for professional photo and portrait enlargement services.</p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="px-2 py-1 rounded text-xs bg-orange-500/20 text-orange-600 dark:text-orange-300">HTML</span>
+            <span class="px-2 py-1 rounded text-xs bg-blue-500/20 text-blue-600 dark:text-blue-300">CSS</span>
+            <span class="px-2 py-1 rounded text-xs bg-cyan-500/20 text-cyan-600 dark:text-cyan-300">TAILWIND</span>
+          </div>
+          <a href="https://enlarge-studio.vercel.app" target="_blank" rel="noopener" class="text-sm font-['Inter'] font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-500 transition">Live Preview →</a>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-center md:ml-12" data-aos="fade-up">
+        <div class="order-2 md:order-1">
+          <div class="text-xs font-['Inter'] font-semibold text-gray-500 mb-2">PROJECT 03</div>
+          <h3 class="text-2xl font-['Inter'] font-bold text-gray-900 dark:text-white mb-3">DLS Hub</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-5">A Dream League Soccer tips guide — skills, formations, players and tactics for better gameplay.</p>
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="px-2 py-1 rounded text-xs bg-orange-500/20 text-orange-600 dark:text-orange-300">HTML</span>
+            <span class="px-2 py-1 rounded text-xs bg-cyan-500/20 text-cyan-600 dark:text-cyan-300">TAILWIND</span>
+            <span class="px-2 py-1 rounded text-xs bg-green-500/20 text-green-600 dark:text-green-300">JAVASCRIPT</span>
+          </div>
+          <a href="https://dlshub.vercel.app" target="_blank" rel="noopener" class="text-sm font-['Inter'] font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-500 transition">Live Preview →</a>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10 order-1 md:order-2">
+          <img src="dlshub.jpg" alt="DLS Hub preview" class="w-full h-56 object-cover hover:scale-105 transition duration-500" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="border-y border-gray-200 dark:border-white/5 bg-gray-100/50 dark:bg-white/[0.01]">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <span class="text-xs font-['Inter'] font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400 mb-2" data-aos="fade-up">Blog</span>
+      <h2 class="text-3xl md:text-4xl font-['Inter'] font-bold text-gray-900 dark:text-white mt-4 mb-14" data-aos="fade-up">From the journal</h2>
+      <div id="home-blog-grid" class="grid lg:grid-cols-3 gap-6" data-aos="fade-up">
+        <p class="lg:col-span-3 text-gray-500 text-sm py-10 text-center">Loading posts...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="max-w-3xl mx-auto px-6 py-24">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <span class="text-xs font-['Inter'] font-semibold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">Contact</span>
+      <h2 class="text-3xl md:text-4xl font-['Inter'] font-bold text-gray-900 dark:text-white mt-4 mb-4">Have an idea? Let's build it.</h2>
+      <p class="text-gray-600 dark:text-gray-400">Reach out about websites, projects, collaborations and ideas.</p>
+    </div>
+    <form id="contact-form" action="https://formsubmit.co/randyblazedev@gmail.com" method="POST" class="space-y-4 bg-white dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 rounded-2xl p-8" data-aos="fade-up">
+      <input type="hidden" name="_subject" value="New portfolio message from RandyBlazeDev">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <div>
+        <label for="name" class="block text-xs font-['Inter'] font-medium text-gray-500 dark:text-gray-400 mb-2">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name" class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm outline-none focus:border-blue-500 transition placeholder:text-gray-400">
+      </div>
+      <div>
+        <label for="email" class="block text-xs font-['Inter'] font-medium text-gray-500 dark:text-gray-400 mb-2">Email</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com" class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm outline-none focus:border-blue-500 transition placeholder:text-gray-400">
+      </div>
+      <div>
+        <label for="message" class="block text-xs font-['Inter'] font-medium text-gray-500 dark:text-gray-400 mb-2">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..." class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-950 border border-gray-200 dark:border-white/10 text-gray-900 dark:text-white text-sm outline-none focus:border-blue-500 transition resize-none placeholder:text-gray-400"></textarea>
+      </div>
+      <button type="submit" class="w-full py-3.5 rounded-xl bg-blue-500 hover:bg-blue-600 text-white font-['Inter'] font-semibold transition hover:-translate-y-0.5 shadow-lg shadow-blue-600/20">Send Message</button>
+    </form>
+  </section>
+
+  <footer class="border-t border-gray-200 dark:border-white/5 py-10 px-6 text-center">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="font-['Inter'] font-bold text-gray-900 dark:text-white">RBlaze<span class="text-blue-500">.dev</span></span>
+      <p class="text-xs text-gray-500">© 2026 Randy Blaze — Built with 💙</p>
+      <a href="https://github.com/Randyblazedev" target="_blank" rel="noopener" class="text-xs text-gray-500 hover:text-gray-900 dark:hover:text-white transition">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const themeBtn = document.getElementById("theme-btn");
+    if (localStorage.theme !== "light") html.classList.add("dark");
+    function renderBtn(){ themeBtn.textContent = html.classList.contains("dark") ? "🌙" : "☀️"; }
+    themeBtn.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      localStorage.theme = html.classList.contains("dark") ? "dark" : "light";
+      renderBtn();
+    });
+    renderBtn();
+
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      menuBtn.textContent = mobileMenu.classList.contains("hidden") ? "☰" : "✕";
+    });
+
+    new Typed("#typed-line", {
+      strings: ["building in public ⚡", "let's create something"],
+      typeSpeed: 60, backSpeed: 30, backDelay: 2000, loop: true
+    });
+
+    const form = document.getElementById("contact-form");
+    form.addEventListener("submit", () => {
+      const btn = form.querySelector("button");
+      btn.textContent = "Sending...";
+      btn.disabled = true;
+    });
+
+    // ---- Homepage blog cards (dynamic from Supabase) ----
+    (async function loadHomeBlog() {
+      const grid = document.getElementById("home-blog-grid");
+      if (!grid) return;
+      const SUPABASE_URL = "https://bedyxwywkxwhkiiufvnm.supabase.co";
+      const KEY = "sb_publishable_0PA87lz20zFKUcDsvUdURg_X3f51fJ7";
+      try {
+        const res = await fetch(SUPABASE_URL + "/rest/v1/posts?select=*&order=created_at.desc&limit=3", {
+          headers: { "apikey": KEY, "Authorization": "Bearer " + KEY }
+        });
+        const posts = await res.json();
+        if (!res.ok || !Array.isArray(posts) || !posts.length) {
+          grid.innerHTML = '<p class="lg:col-span-3 text-gray-500 text-sm py-10 text-center">No posts yet.</p>';
+          return;
+        }
+        const catLabel = (c) => ({ journey: "JOURNEY", tutorials: "TUTORIALS", news: "NEWS", projects: "PROJECTS" }[c] || (c || "").toUpperCase());
+        const catColor = (c) => ({ journey: "purple", tutorials: "green", news: "blue", projects: "indigo" }[c] || "purple");
+        const words = (s) => Math.max(1, Math.round((s || "").trim().split(/\s+/).length / 200)) + " min read";
+        const fmt = (d) => new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+        const big = posts[0];
+        const rest = posts.slice(1, 3);
+        const cc = catColor(big.category);
+        let html = `
+          <a href="article.html?slug=${big.slug}" class="lg:col-span-2 group rounded-2xl border border-gray-200 dark:border-white/10 overflow-hidden hover:border-blue-500/30 transition p-8 bg-white dark:bg-white/[0.02]">
+            <div class="flex items-center gap-3 text-xs text-gray-500 mb-4">
+              <span class="px-2 py-0.5 rounded bg-${cc}-500/20 text-${cc}-600 dark:text-${cc}-300">${catLabel(big.category)}</span>
+              <span>${fmt(big.date)}</span><span>·</span><span>${words(big.content)}</span>
+            </div>
+            <h3 class="text-2xl font-['Inter'] font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition mb-3">${big.title}</h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-5">${big.excerpt || ""}</p>
+            <span class="text-sm font-['Inter'] font-semibold text-blue-600 dark:text-blue-400">Read Article →</span>
+          </a>`;
+        html += `<div class="space-y-6">`;
+        rest.forEach(p => {
+          const pc = catColor(p.category);
+          html += `
+            <a href="article.html?slug=${p.slug}" class="group block rounded-2xl border border-gray-200 dark:border-white/10 hover:border-${pc}-500/30 transition p-6 bg-white dark:bg-white/[0.02]">
+              <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+                <span class="px-2 py-0.5 rounded bg-${pc}-500/20 text-${pc}-600 dark:text-${pc}-300">${catLabel(p.category)}</span>
+                <span>${words(p.content)}</span>
+              </div>
+              <h4 class="font-['Inter'] font-bold text-gray-900 dark:text-white group-hover:text-${pc}-600 dark:group-hover:text-${pc}-400 transition mb-2">${p.title}</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400">${p.excerpt || ""}</p>
+              <span class="text-sm font-['Inter'] font-semibold text-blue-600 dark:text-blue-400">Read Article →</span>
+            </a>`;
+        });
+        html += `<a href="blog.html" class="text-xs font-['Inter'] font-semibold text-sm text-blue-400">Explore Blog →</a></div>`;
+        grid.innerHTML = html;
+      } catch (e) {
+        grid.innerHTML = '<p class="lg:col-span-3 text-gray-500 text-sm py-10 text-center">Could not load posts.</p>';
+      }
+    })();
+
+    AOS.init({ duration: 700, once: true});
+  </script>
+</body>
+</html>
