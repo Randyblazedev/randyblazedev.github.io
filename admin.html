@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Randy Blaze</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body class="bg-gray-950 text-white min-h-screen">
+
+  <!-- ============ LOGIN SCREEN ============ -->
+  <div id="login-screen" class="min-h-screen flex items-center justify-center px-6">
+    <div class="w-full max-w-sm bg-white/[0.03] border border-white/10 rounded-2xl p-8">
+      <h1 class="text-xl font-bold text-center mb-1">Admin Login</h1>
+      <p class="text-sm text-gray-500 text-center mb-6">Sign in with your Supabase account</p>
+
+      <form id="login-form" class="flex flex-col gap-4">
+        <input id="login-email" type="email" placeholder="Email" required
+          class="w-full px-4 py-3 rounded-xl bg-gray-950 border border-white/10 text-white text-sm outline-none focus:border-blue-500" />
+        <input id="login-pass" type="password" placeholder="Password" required
+          class="w-full px-4 py-3 rounded-xl bg-gray-950 border border-white/10 text-white text-sm outline-none focus:border-blue-500" />
+        <button type="submit"
+          class="w-full py-3 rounded-xl bg-blue-500 hover:bg-blue-600 font-semibold text-sm transition">
+          Sign In
+        </button>
+      </form>
+
+      <p id="login-msg" class="hidden mt-4 text-sm text-red-400 text-center">Invalid email or password</p>
+    </div>
+  </div>
+
+  <!-- ============ ADMIN SCREEN ============ -->
+  <div id="admin-screen" class="hidden max-w-3xl mx-auto px-6 py-10">
+
+    <div class="flex items-center justify-between mb-8">
+      <h1 class="text-2xl font-bold">Posts</h1>
+      <div class="flex items-center gap-3">
+        <span id="admin-email" class="text-sm text-gray-400"></span>
+        <button id="logout-btn"
+          class="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-sm text-gray-300 hover:bg-white/10 transition">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <!-- New post form -->
+    <form id="post-form" class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 mb-8 flex flex-col gap-4">
+      <h2 class="font-semibold text-lg">New post</h2>
+      <input id="title" type="text" placeholder="Title" required
+        class="px-4 py-3 rounded-xl bg-gray-950 border border-white/10 text-white text-sm outline-none focus:border-blue-500" />
+      <input id="slug" type="text" placeholder="Slug (auto from title, or type custom)"
+        class="px-4 py-3 rounded-xl bg-gray-950 border border-white/10 text-white text-sm outline-none focus:border-blue-500" />
+      <input id="category" type="text" placeholder="Category"
+        class="px-4 py-3 rounded-xl bg-gray-950 border border-white/10 text-white text-sm outline-none focus:border-blue-500" />
+      <input id="excerpt" type="text" placeholder="Excerpt (short summary)" required
+        class="px-4 py-3 rounded-xl bg-gray-950 border border-white/10 text-white text-sm outline-none focus:border-blue-500" />
+      <textarea id="content" rows="8" placeholder="Post content (supports HTML)" required
+        class="px-4 py-3 rounded-xl bg-gray-950 border border-white/10 text-white text-sm outline-none focus:border-blue-500 resize-y"></textarea>
+
+      <div class="flex gap-3">
+        <button type="submit"
+          class="px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-600 font-semibold text-sm transition">Publish</button>
+        <button type="button" id="cancel-edit"
+          class="px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-sm text-gray-300 hover:bg-white/10 transition hidden">Cancel edit</button>
+      </div>
+      <p id="form-msg" class="hidden text-sm"></p>
+    </form>
+
+    <!-- Posts list -->
+    <h2 class="font-semibold text-lg mb-3">All posts</h2>
+    <div id="post-list" class="flex flex-col gap-3"></div>
+  </div>
+
+  <script>
+    // ===== CONFIG (replace with YOUR url + anon key) =====
+    const SUPABASE_URL = "https://bedyxwywkxwhkiiufvnm.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_0PA87lz20zFKUcDsvUdURg_X3f51fJ7";
+
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const loginScreen = document.getElementById("login-screen");
+    const adminScreen = document.getElementById("admin-screen");
+    const loginForm = document.getElementById("login-form");
+    const loginMsg = document.getElementById("login-msg");
+    const adminEmail = document.getElementById("admin-email");
+    const postForm = document.getElementById("post-form");
+    const formMsg = document.getElementById("form-msg");
+    const listEl = document.getElementById("post-list");
+    const cancelEdit = document.getElementById("cancel-edit");
+
+    let editingId = null;
+
+    // ===== SESSION / AUTH =====
+    async function checkSession() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) showAdmin(session.user.email);
+      else showLogin();
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      loginMsg.classList.add("hidden");
+      const email = document.getElementById("login-email").value.trim();
+      const password = document.getElementById("login-pass").value;
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error || !data.session) {
+        loginMsg.classList.remove("hidden");
+        return;
+      }
+      showAdmin(data.session.user.email);
+    }
+
+    function showAdmin(email) {
+      adminEmail.textContent = email;
+      loginScreen.classList.add("hidden");
+      adminScreen.classList.remove("hidden");
+      loadPosts();
+    }
+
+    function showLogin() {
+      loginScreen.classList.remove("hidden");
+      adminScreen.classList.add("hidden");
+    }
+
+    // ===== POST CRUD =====
+    function showMsg(text, ok = true) {
+      formMsg.textContent = text;
+      formMsg.className = "text-sm " + (ok ? "text-emerald-400" : "text-red-400");
+      formMsg.classList.remove("hidden");
+    }
+
+    async function loadPosts() {
+      const { data, error } = await supabase
+        .from("posts")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error || !data) {
+        listEl.innerHTML = '<p class="text-gray-500 text-sm">Could not load posts.</p>';
+        return;
+      }
+      if (!data.length) {
+        listEl.innerHTML = '<p class="text-gray-500 text-sm">No posts yet.</p>';
+        return;
+      }
+
+      listEl.innerHTML = data.map(p => `
+        <div class="flex items-center justify-between gap-4 bg-white/[0.02] border border-white/10 rounded-xl p-4">
+          <div class="min-w-0">
+            <div class="font-semibold text-white text-sm truncate">${p.title}</div>
+            <div class="text-xs text-gray-500 mt-0.5">${p.category || ""} · ${p.date || ""} · /${p.slug}</div>
+          </div>
+          <div class="flex gap-2 shrink-0">
+            <button data-edit="${p.id}" class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-300 hover:bg-white/10 transition">Edit</button>
+            <button data-del="${p.id}" class="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-xs text-red-300 hover:bg-red-500/20 transition">Delete</button>
+          </div>
+        </div>
+      `).join("");
+
+      listEl.querySelectorAll("[data-del]").forEach(btn => {
+        btn.addEventListener("click", async () => {
+          if (!confirm("Delete this post?")) return;
+          const { error } = await supabase.from("posts").delete().eq("id", btn.dataset.del);
+          if (error) return showMsg("Delete failed", false);
+          showMsg("Post deleted");
+          loadPosts();
+        });
+      });
+
+      listEl.querySelectorAll("[data-edit]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const post = data.find(p => p.id === btn.dataset.edit);
+          if (!post) return;
+          editingId = post.id;
+          document.getElementById("title").value = post.title;
+          document.getElementById("slug").value = post.slug;
+          document.getElementById("category").value = post.category || "";
+          document.getElementById("excerpt").value = post.excerpt;
+          document.getElementById("content").value = post.content;
+          cancelEdit.classList.remove("hidden");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    }
+
+    function resetForm() {
+      editingId = null;
+      postForm.reset();
+      cancelEdit.classList.add("hidden");
+      formMsg.classList.add("hidden");
+    }
+
+    async function handlePostSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById("title").value.trim();
+      const slugInput = document.getElementById("slug").value.trim();
+      const slug = (slugInput || title).toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+      const category = document.getElementById("category").value.trim();
+      const excerpt = document.getElementById("excerpt").value.trim();
+      const content = document.getElementById("content").value;
+
+      if (!title || !slug || !excerpt || !content) return showMsg("Title, slug, excerpt and content are required", false);
+
+      if (editingId) {
+        const { error } = await supabase.from("posts")
+          .update({ title, slug, category, excerpt, content })
+          .eq("id", editingId);
+        if (error) return showMsg("Update failed: " + error.message, false);
+        showMsg("Post updated");
+      } else {
+        const { error } = await supabase.from("posts").insert({
+          title, slug, category, excerpt, content,
+          date: new Date().toISOString().slice(0, 10),
+        });
+        if (error) return showMsg("Save failed: " + error.message, false);
+        showMsg("Post published");
+      }
+
+      resetForm();
+      loadPosts();
+    }
+
+    // ===== WIRE UP =====
+    loginForm.addEventListener("submit", handleLogin);
+    postForm.addEventListener("submit", handlePostSubmit);
+    cancelEdit.addEventListener("click", resetForm);
+    document.getElementById("logout-btn").addEventListener("click", async () => {
+      await supabase.auth.signOut();
+      resetForm();
+      showLogin();
+    });
+
+    checkSession();
+  </script>
+</body>
+</html>
+
